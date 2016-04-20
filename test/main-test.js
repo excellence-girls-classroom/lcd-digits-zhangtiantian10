@@ -20,9 +20,9 @@ describe('LCD',function () {
     describe('searchSameNumber',function () {
 
         it('correct',function () {
-           var LCDArray = ['._....._.',
-                           '|_|..||.|',
-                           '..|..||_|'];
+           var LCDArray = ['._. ... ._. ',
+                           '|_| ..| |.| ',
+                           '..| ..| |_| '];
             expect(searchSameNumber([9,1,0],LCDNumber)).toEqual(LCDArray);
         });
     });
@@ -32,9 +32,9 @@ describe('LCD',function () {
 
             spyOn(console, 'log');
             createLCDString(input);
-           var printLCD = '._....._.\n'+
-               '|_|..||.|\n'+
-               '..|..||_|\n';
+           var printLCD = '._. ... ._. \n'+
+               '|_| ..| |.| \n'+
+               '..| ..| |_| \n';
             expect(console.log).toHaveBeenCalledWith(printLCD);
         });
     })
