@@ -14,13 +14,18 @@ function splitNumber(input) {
     return numberArray;
 }
 
+function mergeLCDArray(LCDNumber,numberArray) {
+    var LCDArray = '';
+    for (var i = 0; i < numberArray.length; i++) {
+        LCDArray += LCDNumber[numberArray[i]];
+    }
+    return LCDArray;
+};
+
 function searchSameNumber(numberArray, LCDNumber) {
     var LCDArray = [];
     for(var j = 0; j<LCDNumber.length;j++) {
-        LCDArray[j] = '';
-        for (var i = 0; i < numberArray.length; i++) {
-            LCDArray[j] += LCDNumber[j][numberArray[i]];
-        }
+        LCDArray[j] = mergeLCDArray(LCDNumber[j],numberArray);
     }
     return LCDArray;
 }
