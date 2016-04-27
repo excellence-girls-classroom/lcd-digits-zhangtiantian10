@@ -4,14 +4,14 @@ describe('LCD',function () {
     
     beforeEach(function () {
         LCDNumber = loadLCDNumber();
-        inputTwo = 110;
-        input = 910;
+        inputTwo = 51340;
+        input = 26789;
     });
 
     describe('splitNumber',function () {
       
         it('correct',function () {
-           var numberArray = [1,1,0];
+           var numberArray = [5,1,3,4,0];
             expect(splitNumber(inputTwo)).toEqual(numberArray);
         });
     });
@@ -19,10 +19,10 @@ describe('LCD',function () {
     describe('searchSameNumber',function () {
 
         it('correct',function () {
-           var LCDArray = ['... ... ._. ',
-                           '..| ..| |.| ',
-                           '..| ..| |_| '];
-            expect(searchSameNumber([1,1,0],LCDNumber)).toEqual(LCDArray);
+           var LCDArray = ['._. ._. ._. ._. ._. ',
+                           '._| |_. ..| |_| |_| ',
+                           '|_. |_| ..| |_| ..| '];
+            expect(searchSameNumber([2,6,7,8,9],LCDNumber)).toEqual(LCDArray);
         });
     });
 
@@ -31,10 +31,10 @@ describe('LCD',function () {
         it('correct',function () {
 
             spyOn(console, 'log');
-            createLCDString(input);
-           var printLCD = '._. ... ._. \n'+
-               '|_| ..| |.| \n'+
-               '..| ..| |_| \n';
+            createLCDString(inputTwo);
+           var printLCD = '._. ... ._. ... ._. \n'+
+                          '|_. ..| ._| |_| |.| \n'+
+                          '._| ..| ._| ..| |_| \n';
             expect(console.log).toHaveBeenCalledWith(printLCD);
         });
     });
