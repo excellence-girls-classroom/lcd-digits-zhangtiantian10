@@ -1,31 +1,31 @@
-/**
- * Created by zhangtian on 16-4-19.
- */
 describe('LCD',function () {
     var LCDNumber;
-    var input;
+    var input,inputTwo;
     
     beforeEach(function () {
-       LCDNumber = loadLCDNumber();
-       input = 910; 
+        LCDNumber = loadLCDNumber();
+        inputTwo = 110;
+        input = 910;
     });
+
     describe('splitNumber',function () {
       
         it('correct',function () {
-           var numberArray = [9,1,0];
-            expect(splitNumber(input)).toEqual(numberArray);
+           var numberArray = [1,1,0];
+            expect(splitNumber(inputTwo)).toEqual(numberArray);
         });
     });
 
     describe('searchSameNumber',function () {
 
         it('correct',function () {
-           var LCDArray = ['._. ... ._. ',
-                           '|_| ..| |.| ',
+           var LCDArray = ['... ... ._. ',
+                           '..| ..| |.| ',
                            '..| ..| |_| '];
-            expect(searchSameNumber([9,1,0],LCDNumber)).toEqual(LCDArray);
+            expect(searchSameNumber([1,1,0],LCDNumber)).toEqual(LCDArray);
         });
     });
+
     describe('print',function () {
 
         it('correct',function () {
@@ -37,5 +37,5 @@ describe('LCD',function () {
                '..| ..| |_| \n';
             expect(console.log).toHaveBeenCalledWith(printLCD);
         });
-    })
+    });
 });
