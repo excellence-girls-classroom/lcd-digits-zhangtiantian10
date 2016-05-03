@@ -1,39 +1,37 @@
 function createLCDString(input) {
-    var LCDNumber = loadLCDNumber();
-    var numberArray = splitNumber(input);
-    var LCDArray = searchSameNumber(numberArray,LCDNumber);
-    print(LCDArray);
+    var lcdLines = generateLCDLines(splitInput(input), loadLCDNumberDict());
+    var lcdText = generateLCDText(lcdLines);
+    console.log(lcdText);
 }
 
-function splitNumber(input) {
-    input = input + '';
-    var numberArray = input.split('');
-    for(var i = 0; i<numberArray.length;i++){
+function splitInput(input) {
+    var numberArray = input.toString().split('');
+    for (var i = 0; i < numberArray.length; i++) {
         numberArray[i] = parseInt(numberArray[i]);
     }
     return numberArray;
 }
 
-function mergeLCDArray(LCDNumber,numberArray) {
-    var LCDArray = '';
+function generateLCDLine(numberArray, LCDNumber) {
+    var lcdLine = '';
     for (var i = 0; i < numberArray.length; i++) {
-        LCDArray += LCDNumber[numberArray[i]];
+        lcdLine += LCDNumber[numberArray[i]];
     }
-    return LCDArray;
+    return lcdLine;
 };
 
-function searchSameNumber(numberArray, LCDNumber) {
-    var LCDArray = [];
-    for(var j = 0; j<LCDNumber.length;j++) {
-        LCDArray[j] = mergeLCDArray(LCDNumber[j],numberArray);
+function generateLCDLines(numberArray, lcdNumberDict) {
+    var lcdLines = [];
+    for (var i = 0; i < lcdNumberDict.length; i++) {
+        lcdLines.push(generateLCDLine(numberArray, lcdNumberDict[i]));
     }
-    return LCDArray;
+    return lcdLines;
 }
 
-function print(LCDArray) {
-    var printLCD = '';
-    for(var i = 0; i<LCDArray.length;i++){
-       printLCD += (LCDArray[i]+'\n');
+function generateLCDText(lcdLines) {
+    var lcdText = '';
+    for (var i = 0; i < lcdLines.length; i++) {
+        lcdText += (lcdLines[i] + '\n');
     }
-    console.log(printLCD);
+    return lcdText;
 }
